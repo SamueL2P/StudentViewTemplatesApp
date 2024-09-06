@@ -1,0 +1,51 @@
+﻿@model IEnumerable<StudentViewTemplatesApp.Models.Student>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAllStudents</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <p class="mb-4">
+        @Html.ActionLink("Create New", "Create", new { @class = "text-blue-500 hover:underline" })
+    </p>
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "text-blue-500 hover:underline" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "text-blue-500 hover:underline" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "text-blue-500 hover:underline" }) |
+                        @Html.ActionLink("Address", "Address", new { id = item.Id }, new { @class = "text-blue-500 hover:underline" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿@model StudentViewTemplatesApp.Models.Address
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Address</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h4 class="text-xl font-bold mb-4">Address</h4>
+        <hr class="my-4" />
+        <dl class="space-y-4">
+            <div>
+                <dt class="font-bold text-gray-700">@Html.DisplayNameFor(model => model.Country)</dt>
+                <dd class="text-gray-900">@Html.DisplayFor(model => model.Country)</dd>
+            </div>
+            <div>
+                <dt class="font-bold text-gray-700">@Html.DisplayNameFor(model => model.State)</dt>
+                <dd class="text-gray-900">@Html.DisplayFor(model => model.State)</dd>
+            </div>
+            <div>
+                <dt class="font-bold text-gray-700">@Html.DisplayNameFor(model => model.City)</dt>
+                <dd class="text-gray-900">@Html.DisplayFor(model => model.City)</dd>
+            </div>
+        </dl>
+        <div class="mt-4">
+            @Html.ActionLink("Edit Address", "EditAddress", new { id = Model.Id }, new { @class = "text-blue-500 hover:underline" }) |
+            @Html.ActionLink("Delete Address", "DeleteAddress", new { id = Model.Id }, new { @class = "text-red-500 hover:underline" }) |
+            @Html.ActionLink("Back to List", "", new { @class = "text-blue-500 hover:underline" })
+        </div>
+    </div>
+</body>
+</html>

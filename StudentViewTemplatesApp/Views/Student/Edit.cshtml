@@ -1,0 +1,51 @@
+﻿@model StudentViewTemplatesApp.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="max-w-lg mx-auto p-4 border border-gray-300 rounded-lg shadow-lg">
+            <h4 class="text-xl font-semibold mb-4">Student</h4>
+            <hr class="mb-4" />
+            @Html.ValidationSummary(true, "", new { @class = "text-red-600 mb-4" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="mb-4">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-input mt-1 block w-full" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-red-600 mt-1" })
+            </div>
+
+            <div class="mb-4">
+                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-input mt-1 block w-full" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-red-600 mt-1" })
+            </div>
+
+            <div class="mb-4">
+                <input type="submit" value="Save" class="btn btn-primary py-2 px-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600" />
+            </div>
+        </div>
+    }
+
+    <div class="text-center mt-4">
+        @Html.ActionLink("Back to List", "GetAllStudents", new { @class = "text-blue-500 hover:underline" })
+    </div>
+</body>
+</html>
